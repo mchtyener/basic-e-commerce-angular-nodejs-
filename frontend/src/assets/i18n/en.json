@@ -1,0 +1,36 @@
+{
+  "HOME": {
+    "TITLE": "Welcome",
+    "SELECT": "Change language"
+  },
+  "ERROR": {
+    "INPUTPHONEISVALID": "Invalid phone number. Please enter a valid phone number.",
+    "INPUTPHONEISPOSSIBLE":"The phone number appears valid but is not possible. Please check again.",
+    "REQUIRED": "This field is required. Please fill out this field.",
+    "NAME":"First Name is required",
+    "LAST_NAME":"Last Name is required",
+    "EMAIL":"Email is required",
+    "EMAIL_INVALID":"Invalid email format",
+    "PASSWORD":"Password is required",
+    "CONFIRM_PASSWORD":"Confirm Password is required",
+    "PASSWORD_MISMATCH":"Passwords do not match"
+    },
+  "PLACEHOLDER":{
+    "PHONE":"Phone Number"
+  },
+  "AUTH":{
+    "REGISTER":"Register",
+    "FIRST_NAME":"First Name",
+    "LAST_NAME":"Last Name",
+    "EMAIL":"Email",
+    "PASSWORD":"Password",
+    "CONFIRM_PASSWORD":"Confirm Password",
+    "LOGIN":"Login",
+    "LOGOUT":"Logout"
+  },
+  "PRODUCT":{
+    "NO_PRODUCT":"Product not available",
+     "DETAIL":"See Detail"
+  }
+  
+}

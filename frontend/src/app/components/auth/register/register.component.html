@@ -1,0 +1,57 @@
+<div class="container  my-5">
+  <h2>{{'AUTH.REGISTER' | translate}}</h2>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off">
+    <div class="form-group mb-3">
+      <label for="firstName" class="form-label">{{'AUTH.FIRST_NAME' | translate}}</label>
+      <input id="firstName" type="text" formControlName="firstName" class="form-control"
+        [ngClass]="{ 'is-invalid': f['firstName'].touched && f['firstName'].errors }" autocomplete="given-name" />
+      <div *ngIf="f['firstName'].touched && f['firstName'].errors" class="invalid-feedback">
+        {{'ERROR.NAME' | translate}}
+      </div>
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="lastName" class="form-label">{{'AUTH.LAST_NAME' | translate}}</label>
+      <input id="lastName" type="text" formControlName="lastName" class="form-control"
+        [ngClass]="{ 'is-invalid': f['lastName'].touched && f['lastName'].errors }" autocomplete="family-name" />
+      <div *ngIf="f['lastName'].touched && f['lastName'].errors" class="invalid-feedback">
+        {{'ERROR.LAST_NAME' | translate}}
+      </div>
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="email" class="form-label">{{'AUTH.EMAIL' | translate}}</label>
+      <input id="email" type="email" formControlName="email" class="form-control"
+        [ngClass]="{ 'is-invalid': f['email'].touched && f['email'].errors }" autocomplete="email" />
+      <div *ngIf="f['email'].touched && f['email'].errors" class="invalid-feedback">
+        <div *ngIf="f['email'].errors['required']"> {{'ERROR.EMAIL' | translate}}</div>
+        <div *ngIf="f['email'].errors['email']"> {{'ERROR.EMAIL_INVALID' | translate}}</div>
+      </div>
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="password" class="form-label">{{'AUTH.PASSWORD' | translate}}</label>
+      <input id="password" type="password" formControlName="password" class="form-control"
+        [ngClass]="{ 'is-invalid': f['password'].touched && f['password'].errors }" autocomplete="new-password" />
+      <div *ngIf="f['password'].touched && f['password'].errors" class="invalid-feedback">
+        {{'ERROR.PASSWORD' | translate}}
+      </div>
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="confirmPassword" class="form-label">{{'AUTH.CONFIRM_PASSWORD' | translate}}</label>
+      <input id="confirmPassword" type="password" formControlName="confirmPassword" class="form-control"
+        [ngClass]="{ 'is-invalid': f['confirmPassword'].touched && f['confirmPassword'].errors }"
+        autocomplete="new-password" />
+      <div *ngIf="f['confirmPassword'].touched && f['confirmPassword'].errors" class="invalid-feedback">
+        <div *ngIf="f['confirmPassword'].errors['required']"> {{'ERROR.CONFIRM_PASSWORD' | translate}}</div>
+        <div *ngIf="form.errors?.['passwordMismatch']">{{'ERROR.PASSWORD_MISMATCH' | translate}}</div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <app-phone-number-input (phoneNumberChange)="updatePhoneNumber($event)"></app-phone-number-input>
+    </div>
+    <button [disabled]="isDisabled" type="submit" class="btn btn-primary w-100"> {{'AUTH.REGISTER' |
+      translate}}</button>
+  </form>
+</div>

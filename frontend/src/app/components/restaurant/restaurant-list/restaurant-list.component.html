@@ -1,0 +1,32 @@
+<div class="container">
+  <ng-container *ngIf="restaurant$ | async as data; else loading">
+    <ng-container *ngIf="data.length === 0; else productHtml">
+      <h6>{{ 'PRODUCT.NO_PRODUCT' | translate }}</h6>
+    </ng-container>
+    <ng-template #productHtml>
+      <div class="row mb-4">
+        <div class="col-md-3 mb-3" *ngFor="let item of data">
+          <div class="card shadow-sm">
+            <img [src]="assets + item.logo" [routerLink]="type ? item._id : 'restaurant/'+item._id"
+              class="card-img-top pointer img-fluid" alt="{{ item.name }}">
+            <div class="card-body">
+              <h6 class="card-title text-truncate pointer" routerLink="restaurant/{{ item._id }}">{{ item.name |
+                titlecase }}
+              </h6>
+              <p class="text-muted my-0">Open: {{ item.opening_time }} - Close: {{ item.closing_time }}</p>
+              <p class="fw-bold my-0">Min Order: {{ item.minimum_order_amount | currency:'₺' }}</p>
+            </div>
+            <div class="card-footer d-flex justify-content-between" *ngIf="type === role.ROLE_ADMIN">
+              <button [routerLink]="[item._id]" class="btn btn-primary">Edit</button>
+              <button (click)="remove(item._id)" class="btn btn-danger">Remove</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </ng-container>
+
+  <ng-template #loading>
+    <app-restaurants-placeholder></app-restaurants-placeholder>
+  </ng-template>
+</div>

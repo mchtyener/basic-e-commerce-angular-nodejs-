@@ -1,0 +1,31 @@
+{
+  "ERROR": {
+    "INPUTPHONEISVALID": "Geçersiz telefon numarası. Lütfen geçerli bir telefon numarası girin.",
+    "INPUTPHONEISPOSSIBLE": "Telefon numarası geçerli görünüyor, ancak mümkün değil. Lütfen tekrar kontrol edin.",
+    "REQUIRED": "Bu alan zorunludur. Lütfen bu alanı doldurun.",
+    "NAME": "İsim zorunludur",
+    "LAST_NAME": "Soyisim zorunludur",
+    "EMAIL": "E-posta zorunludur",
+    "EMAIL_INVALID": "Geçersiz e-posta formatı",
+    "PASSWORD": "Şifre zorunludur",
+    "CONFIRM_PASSWORD": "Şifreyi onaylama zorunludur",
+    "PASSWORD_MISMATCH": "Şifreler uyuşmuyor"
+  },
+  "PLACEHOLDER": {
+    "PHONE": "Telefon Numarası"
+  },
+  "AUTH": {
+    "REGISTER": "Kayıt Ol",
+    "FIRST_NAME": "İsim",
+    "LAST_NAME": "Soyisim",
+    "EMAIL": "E-posta",
+    "PASSWORD": "Şifre",
+    "CONFIRM_PASSWORD": "Şifreyi Onayla",
+    "LOGIN":"Giriş Yap",
+    "LOGOUT":"ÇIkış Yap"
+  },
+  "PRODUCT":{
+    "NO_PRODUCT":"Ürün mevcut değil",
+    "DETAIL":"Detayını Gör"
+  }
+}

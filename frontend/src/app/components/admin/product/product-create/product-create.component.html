@@ -1,0 +1,57 @@
+<form [formGroup]="productForm" class="container mt-4">
+  <h6>Product Create</h6>
+  <hr>
+  <div class="row mt-5">
+    <div class="col-md-6 mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input id="name" formControlName="name" type="text" class="form-control" placeholder="Restaurant name">
+      <small *ngIf="gf.name?.invalid && gf.name?.touched" class="text-danger">
+        Name is required.
+      </small>
+    </div>
+
+    <div class="col-auto mb-3">
+      <label for="price" class="form-label">Price</label>
+      <input id="price" formControlName="price" type="number" class="form-control" placeholder="Price">
+      <small *ngIf="gf.price?.invalid && gf.price?.touched" class="text-danger">
+        Name is required.
+      </small>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea id="description" formControlName="description" class="form-control" rows="2"
+        placeholder="Enter description"></textarea>
+    </div>
+
+
+    <div class="row mb-3">
+      <div class="col-2 mb-2">
+        <label class="btn btn-outline-success w-100">
+          Upload Logo
+          <input class="form-control" name="file" type="file" ng2FileSelect
+            accept="image/png, image/jpeg, image/jpg, image/gif, image/webp" (onFileSelected)="dropped($event)" hidden
+            multiple>
+        </label>
+
+        <ng-container *ngIf="gf.logo.value !== ''; else defaultImg">
+          <img class="img-fluid mt-2" width="300" height="200" [src]="assets + productForm.get('logo')?.value"
+            alt="Logo">
+        </ng-container>
+        <ng-template #defaultImg>
+          <img class="img-fluid mt-2" width="300" height="200" src="../../../../../assets/svg/default.jpg">
+          <small class="text-danger">!!! İmg required</small>
+        </ng-template>
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+  <div class="d-flex justify-content-end">
+    <button type="submit" class="btn btn-outline-success" [disabled]="!productForm.valid" (click)="onSubmit();">Create
+      Product</button>
+  </div>
+</form>

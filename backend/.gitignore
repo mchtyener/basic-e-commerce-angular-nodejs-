@@ -1,0 +1,4 @@
+# Node
+/node_modules
+/uploads
+package-lock.json

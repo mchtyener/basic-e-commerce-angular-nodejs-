@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-4 col-md-3">
+    <ng-select [searchable]="false" [clearable]="false" bindLabel="title" bindValue="id"
+      [(ngModel)]="phoneNumberForm.phoneCodeId" (change)="changeCodeId()" id="phone-code-select">
+      <ng-option *ngFor="let code of phoneCodes" [value]="code.label">
+        <img [src]="code.icon" width="20px" height="14px" />
+        <span>{{ code.label }}</span>
+      </ng-option>
+    </ng-select>
+  </div>
+  <div class="col-8 col-md-9">
+    <input type="tel" class="form-control" id="phoneNumber" [placeholder]="'PLACEHOLDER.PHONE' | translate"
+      [(ngModel)]="phoneNumberForm.phoneNumber" (input)="emitPhoneNumber()" [mask]="phoneMask || '0*'"
+      (focus)="onInputFocus()" />
+  </div>
+  <ng-container *ngIf="inputPhone && phoneNumberForm.phoneNumber !== ''">
+    <ng-container *ngIf="!inputPhone?.isValid()">
+      <small class="text-danger">{{ 'ERROR.INPUTPHONEISVALID' | translate }}</small>
+    </ng-container>
+    <ng-container *ngIf="!inputPhone?.isPossible()">
+      <small class="text-danger">{{ 'ERROR.INPUTPHONEISPOSSIBLE' | translate }}</small>
+    </ng-container>
+  </ng-container>
+  <ng-container *ngIf="isRequired">
+    <div *ngIf="isPhoneInputTouched() && isPhoneNumberInvalid()">
+      <small class="text-danger"> {{ 'ERROR.REQUIRED' | translate }}</small>
+    </div>
+  </ng-container>
+</div>

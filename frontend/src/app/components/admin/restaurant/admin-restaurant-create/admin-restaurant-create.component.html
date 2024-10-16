@@ -1,0 +1,91 @@
+<form [formGroup]="restaurantForm" class="container mt-4">
+  <div class="row">
+
+    <div class="col-md-6 mb-3">
+      <label for="name" class="form-label">Restaurant Name</label>
+      <input id="name" formControlName="name" type="text" class="form-control" placeholder="Restaurant name">
+      <small *ngIf="gf.name?.invalid && gf.name?.touched" class="text-danger">
+        Name is required.
+      </small>
+    </div>
+
+    <div class="col-md-6">
+      <label for="name" class="form-label">Phone Number</label>
+      <app-phone-number-input (phoneNumberChange)="updatePhoneNumber($event)"></app-phone-number-input>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input id="email" formControlName="email" type="email" class="form-control" placeholder="Email address">
+      <small *ngIf="gf.email?.invalid && gf.email?.touched" class="text-danger">
+        Valid email is required.
+      </small>
+    </div>
+
+
+    <div class="col-md-3 mb-3">
+      <label for="opening_time" class="form-label">Opening Time</label>
+      <input id="opening_time" formControlName="opening_time" type="time" class="form-control">
+    </div>
+
+    <div class="col-md-3 mb-3">
+      <label for="closing_time" class="form-label">Closing Time</label>
+      <input id="closing_time" formControlName="closing_time" type="time" class="form-control">
+    </div>
+    <small *ngIf="restaurantForm.hasError('closingTimeError')" class="alert alert-danger">
+      {{ restaurantForm.getError('closingTimeError') }}
+    </small>
+
+
+    <div class="col-12 mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea id="description" formControlName="description" class="form-control" rows="2"
+        placeholder="Enter description"></textarea>
+    </div>
+    <div class="col-12 mb-3">
+      <label for="address" class="form-label">Address</label>
+      <textarea id="address" formControlName="address" class="form-control" rows="2"
+        placeholder="Enter description"></textarea>
+    </div>
+    <div class="col-auto mb-3">
+      <label for="minimum_order_amount" class="form-label">Minimum Order Amount</label>
+      <input id="minimum_order_amount" formControlName="minimum_order_amount" type="number" class="form-control" min="0"
+        placeholder="Minimum order amount">
+    </div>
+    <div class="row mb-3">
+      <div class="col-2 mb-2">
+        <label class="btn btn-outline-success w-100">
+          Upload Logo
+          <input class="form-control" name="file" type="file" ng2FileSelect
+            accept="image/png, image/jpeg, image/jpg, image/gif, image/webp" (onFileSelected)="dropped($event, 'logo')"
+            hidden multiple>
+        </label>
+
+        <ng-container *ngIf="gf.logo.value !== ''">
+          <img class="img-fluid mt-2" width="300" height="200" [src]="assets + restaurantForm.get('logo')?.value"
+            alt="Logo">
+        </ng-container>
+      </div>
+      <div class="col-2 mb-2">
+        <label class="btn btn-outline-success w-100">
+          Upload Banner
+          <input class="form-control" type="file" ng2FileSelect
+            accept="image/png, image/jpeg, image/jpg, image/gif, image/webp"
+            (onFileSelected)="dropped($event, 'banner')" hidden>
+        </label>
+
+        <ng-container *ngIf="gf.banner.value !== ''">
+          <img class="img-fluid mt-2" width="300" height="200" [src]="assets + restaurantForm.get('banner')?.value"
+            alt="Banner">
+        </ng-container>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="d-flex justify-content-end">
+    <button type="submit" class="btn btn-primary" [disabled]="isDisabled" (click)="onSubmit();">Create
+      Restaurant</button>
+  </div>
+</form>
